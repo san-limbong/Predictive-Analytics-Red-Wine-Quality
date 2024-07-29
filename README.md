@@ -175,7 +175,7 @@ Parameter yang digunakan :
 - `default`
 
 6. Hyperparameter Tuning yang digunakan pada proyek ini :
-Berikut adalah tabel yang diperbaiki:
+
 
 
 | Model    | Best Parameters                                                  |
