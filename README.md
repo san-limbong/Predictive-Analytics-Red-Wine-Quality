@@ -1,10 +1,11 @@
 # Laporan Proyek Machine Learning - San Antonio Limbong
 ## Domain Proyek
 Domain Poryek : **Ekonomi dan bisnis** , **Pertanian**
+
 Judul : Predictive Analytics: Menentukan Kualitas Anggur
 
 ### Latar Belakang
-
+![dataset-cover](https://github.com/user-attachments/assets/964f75c0-a8ca-4de5-8b4a-d5d329ef881c)
 Anggur kini menjadi minuman favorit banyak orang. Portugal, negara yang terkenal dengan anggurnya yang enak, terutama anggur vinho verde, semakin gencar mengekspor anggur mereka. Untuk menjaga kualitas anggur yang tinggi, para pembuat anggur menggunakan teknologi terbaru dan melakukan berbagai tes untuk memastikan anggur aman diminum.
 
 Tes-tes ini memeriksa berbagai aspek seperti keasaman, kadar gula, dan kandungan zat-zat tertentu. Berikut adalah variabel input berdasarkan tes fisikokimia:
