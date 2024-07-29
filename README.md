@@ -175,11 +175,14 @@ Parameter yang digunakan :
 - `default`
 
 6. Hyperparameter Tuning yang digunakan pada proyek ini :
-  | model    | best_params                                                     |
-  |----------|-----------------------------------------------------------------|
-  | knn      | 'n_neighbors = 10'                                              |
-  | rf       | 'n_estimators=50, max_depth=16, random_state=55, n_jobs=-1'     |
-  | adaboost | 'learning_rate=0.05, random_state=55'                           |
+Berikut adalah tabel yang diperbaiki:
+
+
+| Model    | Best Parameters                                                  |
+|----------|------------------------------------------------------------------|
+| KNN      | `n_neighbors=10`                                                 |
+| RF       | `n_estimators=50, max_depth=16, random_state=55, n_jobs=-1`      |
+| Adaboost | `learning_rate=0.05, random_state=55`                            |
 
 
 ## Evaluasi
