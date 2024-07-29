@@ -31,7 +31,7 @@ Meskipun kita bisa dengan mudah merasakan enak atau tidaknya suatu anggur, mengh
 ## Business Understanding
 ### Problem Statements
 Berdasarkan latar belakang di atas, berikut ini merupakan rincian masalah yang dapat diselesaikan pada proyek ini:
--  Tes apa yang paling menentukan kualitas sebuah anggur? dan apa yang tidak terlalu berpengaruh terhadap kualitas anggur?
+-  Atribut mana yang paling berpengaruh terhadap kualitas sebuah anggur? dan atribut mana yang tidak terlalu berpengaruh terhadap kualitas anggur?
 -  Bagaimana membuat model machine learning yang dapat menentukan berkualitas atau tidaknya sebuah anggur (Wine) berdasarkan data masukan uji fisikokimia?
 -  Model yang seperti apa yang memiliki akurasi paling baik?
 
@@ -135,25 +135,52 @@ Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
 ## Modelling
 Berikut adalah keterangan dari algoritma-algoritma yang digunakan:
 
-**1. K-Nearest Neighbors (KNN)**
+** 1. K-Nearest Neighbors (KNN)**
 
 ``` KNN adalah algoritma yang digunakan untuk klasifikasi dan regresi. Algoritma ini bekerja dengan mencari sejumlah tetangga terdekat (K) dari suatu titik data baru dan memprediksi nilai berdasarkan mayoritas nilai dari tetangga-tetangga tersebut. Algoritma ini mudah dipahami dan diimplementasikan namun bisa lambat untuk dataset besar karena harus menghitung jarak ke semua titik data.```
 
-**2. Random Forest (RF)**
+Parameter yang digunakan :
+- `n_neighbors` = jumlah tetangga terdekat.
+
+** 2. Random Forest (RF)**
 
 ``` Random Forest adalah ensemble learning method yang menggunakan banyak pohon keputusan (decision trees) untuk klasifikasi atau regresi. Algoritma ini bekerja dengan membuat banyak pohon keputusan dari subset data dan kemudian menggabungkan hasilnya. Ini membantu meningkatkan akurasi dan mengurangi overfitting.```
 
-**3. Adaboost **
+Parameter yang digunakan :
+- `n_estimators` = Jumlah maksimum estimator di mana boosting dihentikan.
+- `max_depth` = Kedalaman maksimum setiap tree.
+- `random_state` = Pengambilan sampel secara acak
+-  `n_jobs=` jumlah job (pekerjaan) yang digunakan secara paralel
+
+** 3. Adaboost **
 
 ``` Adaboost adalah algoritma boosting yang menggabungkan beberapa model lemah (weak learners), seperti pohon keputusan yang pendek (stumps), untuk membentuk model yang kuat. Setiap model lemah dibentuk berdasarkan kesalahan dari model sebelumnya, dengan memberi bobot lebih pada data yang salah diprediksi. Hasil akhirnya adalah model yang lebih akurat.```
 
-**4. Gradient Boosting **
+Parameter yang digunakan :
+- `learning_rate` = Hyperparameter training yang digunakan untuk menghitung nilai koreksi bobot padad waktu proses training. Umumnya nilai learning rate berkisar antara 0 hingga 1
+- `random_state` = Pengambilan sampel secara acak
+
+** 4. Gradient Boosting **
 
 ``` Gradient Boosting adalah metode ensemble yang mirip dengan Adaboost, tetapi menggunakan pendekatan gradient descent untuk mengurangi kesalahan pada setiap iterasi. Model ini menambahkan model baru untuk memperbaiki residu dari model sebelumnya.```
 
-**5. Support Vector Regression (SVR) **
+Parameter yang digunakan :
+- `default`
+
+** 5. Support Vector Regression (SVR) **
 
 ``` SVR adalah varian dari Support Vector Machines (SVM) yang digunakan untuk tugas regresi. SVR mencoba menemukan hyperplane yang memaksimalkan margin antara data dan hyperplane dengan mempertimbangkan toleransi kesalahan tertentu.```
+
+Parameter yang digunakan :
+- `default`
+
+6. Hyperparameter Tuning yang digunakan pada proyek ini :
+  | model    | best_params                                                     |
+  |----------|-----------------------------------------------------------------|
+  | knn      | 'n_neighbors = 10'                                              |
+  | rf       | 'n_estimators=50, max_depth=16, random_state=55, n_jobs=-1'     |
+  | adaboost | 'learning_rate=0.05, random_state=55'                           |
+
 
 ## Evaluasi
 Metrik yang akan kita gunakan pada prediksi ini adalah MSE atau Mean Squared Error yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut.
@@ -173,3 +200,7 @@ Berikut model yang digunakan dan perbandingan error rate terendah menggunakan ms
 
 Berdasarkan gambar tersebut, maka algoritma yang dipilih untuk menjawab tantangan dalam proyek adalah random forest.
 
+## Kesimpulan
+1. Atribut yang paling berpengaruh terhadap kualitas sebuah anggur adalah `alkohol` dengan persentase sebesar 0,49. Sementara atribut yang tidak berpengaruh adalah `free sulfur dioxide` dengan persentase -0.003609.
+2. Pembangunan model yang baik dilakukan dengan melakukan cleaning terhadap data baik berupa missing value, duplicate, ataupun outlier. Selanjutnya dengan data yang bersih dapat dilanjutkan ketahapan modelling seperti yang tersedia pada notebook.
+3. Model yang terbaik ditinjau dengan menggunakan error rate terendah dengan kasus regresi. Berdasarkan pengerjaan yang dilakuakn model terbaik ditemukan pada algoritma random forest. 
