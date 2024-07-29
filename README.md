@@ -127,12 +127,47 @@ Volatile acidity memiliki korelasi negatif, yang artinya jika semakin bagus kual
 
 Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
 - Penanganan Duplicate Values. Pada kasus dataset ini ada beberapa kolom dengan duplicate values dan ditangani dengan melakukan drop untuk menghilangkan redudansi data.
-- Mendeteksi outliers. Penanganan dilakukan menggunakan IQR (InterQuartile Range) untuk mendeteksi outliers. IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1)
+- Mendeteksi outliers. Penanganan dilakukan menggunakan IQR (InterQuartile Range) untuk mendeteksi outliers. IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) selanjutnya nilai apa pun yang berada di luar batas ini dianggap sebagai outlier.
 - Melakukan drop terhadap fitur berdasarkan temuan pada matriks korelasi.
 - Split Data atau pembagian dataset menjadi data latih dan data uji menggunakan bantuan train_test_split. Pembagian dataset ini bertujuan agar nantinya dapat digunakan untuk melatih dan mengevaluasi kinerja model. Pada proyek ini, 80% dataset digunakan untuk melatih model, dan 20% sisanya digunakan untuk mengevaluasi model.
 
 
-## Modelling dan Evaluasi
+## Modelling
+Berikut adalah keterangan dari algoritma-algoritma yang digunakan:
+
+**1. K-Nearest Neighbors (KNN)**
+
+``` KNN adalah algoritma yang digunakan untuk klasifikasi dan regresi. Algoritma ini bekerja dengan mencari sejumlah tetangga terdekat (K) dari suatu titik data baru dan memprediksi nilai berdasarkan mayoritas nilai dari tetangga-tetangga tersebut. Algoritma ini mudah dipahami dan diimplementasikan namun bisa lambat untuk dataset besar karena harus menghitung jarak ke semua titik data.```
+
+**2. Random Forest (RF)**
+
+``` Random Forest adalah ensemble learning method yang menggunakan banyak pohon keputusan (decision trees) untuk klasifikasi atau regresi. Algoritma ini bekerja dengan membuat banyak pohon keputusan dari subset data dan kemudian menggabungkan hasilnya. Ini membantu meningkatkan akurasi dan mengurangi overfitting.```
+
+**3. Adaboost **
+
+``` Adaboost adalah algoritma boosting yang menggabungkan beberapa model lemah (weak learners), seperti pohon keputusan yang pendek (stumps), untuk membentuk model yang kuat. Setiap model lemah dibentuk berdasarkan kesalahan dari model sebelumnya, dengan memberi bobot lebih pada data yang salah diprediksi. Hasil akhirnya adalah model yang lebih akurat.```
+
+**4. Gradient Boosting **
+
+``` Gradient Boosting adalah metode ensemble yang mirip dengan Adaboost, tetapi menggunakan pendekatan gradient descent untuk mengurangi kesalahan pada setiap iterasi. Model ini menambahkan model baru untuk memperbaiki residu dari model sebelumnya.```
+
+**5. Support Vector Regression (SVR) **
+
+``` SVR adalah varian dari Support Vector Machines (SVM) yang digunakan untuk tugas regresi. SVR mencoba menemukan hyperplane yang memaksimalkan margin antara data dan hyperplane dengan mempertimbangkan toleransi kesalahan tertentu.```
+
+## Evaluasi
+Metrik yang akan kita gunakan pada prediksi ini adalah MSE atau Mean Squared Error yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut.
+
+![mse](https://github.com/user-attachments/assets/759e96bb-886c-419e-b612-b6047e5d9c61)
+
+```
+Keterangan:
+N = jumlah dataset
+yi = nilai sebenarnya
+y_pred = nilai prediksi
+```
+
 Berikut model yang digunakan dan perbandingan error rate terendah menggunakan mse secara berurutan.
+
 ![evaluasi](https://github.com/user-attachments/assets/730b0be9-3266-4ffa-b0f7-460e2c9a4406)
 
