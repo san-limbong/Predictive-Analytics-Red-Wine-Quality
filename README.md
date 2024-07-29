@@ -171,3 +171,5 @@ Berikut model yang digunakan dan perbandingan error rate terendah menggunakan ms
 
 ![evaluasi](https://github.com/user-attachments/assets/730b0be9-3266-4ffa-b0f7-460e2c9a4406)
 
+Berdasarkan gambar tersebut, maka algoritma yang dipilih untuk menjawab tantangan dalam proyek adalah random forest.
+
