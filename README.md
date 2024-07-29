@@ -95,6 +95,7 @@ Dilihat dari _Tabel 1. EDA Deskripsi Variabel_ dataset ini telah di *bersihkan* 
 
 
 ### EDA - Univariate Analysis
+Gambar. Analisis Univariat
 ![univariat](https://github.com/user-attachments/assets/b537f1bb-d47f-47b7-8bdd-7f9509967914)
 
 Berdasarkan gambar tersebut:
@@ -112,12 +113,12 @@ Berdasarkan gambar tersebut:
 12. Quality (skor antara 0 dan 10) memiliki mean atau rata rata sebesar 5
 
 ### EDA - Multivariate Analysis
+- Gambar. Analisis Multivariat
 ![multivariat](https://github.com/user-attachments/assets/3a6691b7-0e8c-4ff5-aa16-0109d2b96199)
 
-Gambar 2a. Analisis Multivariat
+- Gambar. Analisis Matriks Korelasi
 ![correlation](https://github.com/user-attachments/assets/efc5f85a-a5c5-4323-af5e-f782ca752f8f)
 
-Gambar 2b. Analisis Matriks Korelasi
 Berdasarkan matriks korelasi :
 Volatile acidity memiliki korelasi negatif, yang artinya jika semakin bagus kualitas dari wine tersebut (mendekati 10), maka tingkat volatile aciditynya akan semakin rendah. Dengan kata lain masih memiliki hubungan meskipun tegak lurus. Disisi lain perhatikan korelasi yang dimiliki atribut free sulfur dioxodie. Yang menunjukkan hampir memiliki korelasi yang kecil dengan sebagian besar atribut. Maka dari itu akan kita lakukan feature selection dengan atribut ini
 
