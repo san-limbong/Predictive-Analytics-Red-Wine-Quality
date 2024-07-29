@@ -92,79 +92,47 @@ Dilihat dari _Tabel 1. EDA Deskripsi Variabel_ dataset ini telah di *bersihkan* 
 10. Sulphates : a wine additive which can contribute to sulfur dioxide gas (S02) levels, wich acts as an antimicrobial and antioxidant
 11. Alcohol : the percent alcohol content of the wine
 12. Quality : output variable (based on sensory data, score between 0 and 10)
-<!-- 
+
 
 ### EDA - Univariate Analysis
+![univariat](https://github.com/user-attachments/assets/b537f1bb-d47f-47b7-8bdd-7f9509967914)
 
-![Analisis Univariat (Data Kategori)](https://i.ibb.co/0MRrJCC/jumlah-kualitas-datasets.png)
-
-Gambar 1a. Analisis Univariat (Data Kategori) 
-
-![Univariate Analysis](https://i.ibb.co/V2mQ2dK/EDA-Univariate.png)
-
-Gambar 1b. Analisis Univariat (Data Numerik) 
-
- Berdasarkan _Gambar 1a_ , dapat dilihat bahwa distribusi data katagorik _Quality_ yang terdiri dari _good_ dan _bad_ kualitas apel, yang mana nilai data **bad** terdiri dari `1928` dan **good** terdiri dari `1862`, yang mana menunjukan perbandingan data yang tidak terlalu jauh. Pada _Gambar 1b,_ untuk data numerik memiliki karakteristik, yaitu:
-  - Dilihat dari distribusi data numerik _Size_, ukuran rata-rata buah berkisar dari -2 sampai 2, dan memiliki nilai rata-rata _Mean_ adalah -0.51.
-  - Rata-rata berat apel bernilai -0.99 dan nilai _max_ berat apel adalah 3.08.
-  - Rata-rata tingkat kemanisan apel -0.48.
-  - Tekstur kerenyahan apel berkisar dari 0 hingga 2 yang mana nilai ini menunjukan rata-rata apel itu renyah.
-  - Tingkat kesegaran buah dan Kematangan buat berada pada nilai 0.50 dan 0.53.
-  - Rata-rata tingkat keasaman buah bernilai 0.06.
-
- Nilai-nilai ini menunjukkan bahwa data  telah dinormalisasi dengan cara _z-score normalization_ . _z-score normalization_  mengubah data dengan cara:
- - Mengurangi rata-rata (mean) dari setiap data point.
- - Membagi hasil pengurangan tersebut dengan standar deviasi data.
- 
-
-Pada kasus ini, rata-rata (mean) data "Size" adalah -0.51 dan standar deviasi data "Size" tidak diketahui. Namun, dengan nilai minimum -2 dan maksimum 2, dapat diasumsikan bahwa data "Size" telah diubah skalanya sehingga memiliki mean 0 dan standar deviasi 1. Data numerik lainnya, seperti _"Weight", "Sweetness", "Crunchiness", "Juiciness", "Ripeness", dan "Acidity"_, juga telah dinormalisasi dengan cara yang sama.
-
-
- 
+Berdasarkan gambar tersebut:
+1. Fixed acidity memiliki mean atau rata rata sebesar 7,2
+2. Volatile acidity memiliki mean atau rata rata sebesar 0.500 dan 0,600
+3. Citric acid memiliki mean atau rata rata sebesar 0.00
+4. Residual sugar memiliki mean atau rata rata sebesar 7,2
+5. Chlorides memiliki mean atau rata rata sebesar 0,080
+6. Free sulfur dioxide memiliki mean atau rata rata sebesar 6,0
+7. Total sulfur dioxide memiliki mean atau rata rata sebesar 28,0
+8. Density memiliki mean atau rata rata sebesar 0,99720
+9. pH memiliki mean atau rata rata sebesar 3,36
+10. Sulphates memiliki mean atau rata rata sebesar 0,54 ddan 0,58
+11. Alcohol memiliki mean atau rata rata sebesar 9,5
+12. Quality (skor antara 0 dan 10) memiliki mean atau rata rata sebesar 5
 
 ### EDA - Multivariate Analysis
-
-![Multivariate Analysis](https://i.ibb.co/yNHmpNZ/EDA-MULTIVARIATE.png)
-
+![multivariat](https://github.com/user-attachments/assets/3a6691b7-0e8c-4ff5-aa16-0109d2b96199)
 
 Gambar 2a. Analisis Multivariat
-
-![Multivariate Analysis](https://i.ibb.co/WBQ5gPy/Matrix-corelasi.png)
-
+![correlation](https://github.com/user-attachments/assets/efc5f85a-a5c5-4323-af5e-f782ca752f8f)
 
 Gambar 2b. Analisis Matriks Korelasi
+Berdasarkan matriks korelasi :
+Volatile acidity memiliki korelasi negatif, yang artinya jika semakin bagus kualitas dari wine tersebut (mendekati 10), maka tingkat volatile aciditynya akan semakin rendah. Dengan kata lain masih memiliki hubungan meskipun tegak lurus. Disisi lain perhatikan korelasi yang dimiliki atribut free sulfur dioxodie. Yang menunjukkan hampir memiliki korelasi yang kecil dengan sebagian besar atribut. Maka dari itu akan kita lakukan feature selection dengan atribut ini
 
-Pada _Gambar 2a. Analisis Multivariat_, dengan menggunakan fungsi _pairplot_ dari _library seaborn_, tampak terlihat relasi pasangan dalam dataset menunjukan pola acak. Pada pola sebaran data grafik pairplot, terterlihat bahwa _Size_ dan _Sweetness_ memiliki korelasi negatif menurun, yang mana semakin kecil ukuran buah rasa nya akan semakin manis.
-Pada _Gambar 2b. Analisis Matriks Korelasi_, merupakan _Correlation Matrix_ menunjukkan hubungan antar fitur dalam nilai korelasi. Jika diamati, fitur _Juiciness_ memiliki skor korelasi yang cukup besar `0.24` dengan fitur target _Acidity_ . -->
 
 
 ## Data Preparation
-Pada proses _Data Preparation_ dilakukan kegiatan seperti _Data Gathering_, _Data Assessing_, dan _Data Cleaning_. Pada proses Data Gathering, data diimpor sedemikian rupa agar bisa dibaca dengan baik menggunakan dataframe Pandas. Untuk proses Data Assessing, berikut adalah beberapa pengecekan yang dilakukan:
-- Duplicate data (data yang serupa dengan data lainnya).
-- Missing value (data atau informasi yang "hilang" atau tidak tersedia)
-- Outlier (data yang menyimpang dari rata-rata sekumpulan data yang ada).
 
-Pada proses _Data Cleaning_ yang dilakukan adalah seperti:
-- Converting Column Type (Mengubah tipe suatu kolom).
-- Train Test Split (membagi data menjadi data latih dan data uji).
-- Normalization (mentransformasi data ke dalam skala yang seragam sehingga semua fitur atau atribut memiliki rentang nilai yang sebanding).
-
-| A_id | Size | Weight | Sweetness | Crunchiness | Juiciness | Ripeness | Acidity | Quality |
-| ------ | ------ |------ | ------ | ------ | ------ |------ | ------ |------ |
-| NaN | NaN | NaN | NaN |NaN | NaN| NaN	| Created_by_Nidula_Elgiriyewithana  | NaN |
+Teknik yang digunakan dalam penyiapan data (Data Preparation) yaitu:
+- Penanganan Duplicate Values. Pada kasus dataset ini ada beberapa kolom dengan duplicate values dan ditangani dengan melakukan drop untuk menghilangkan redudansi data.
+- Mendeteksi outliers. Penanganan dilakukan menggunakan IQR (InterQuartile Range) untuk mendeteksi outliers. IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1)
+- Melakukan drop terhadap fitur berdasarkan temuan pada matriks korelasi.
+- Split Data atau pembagian dataset menjadi data latih dan data uji menggunakan bantuan train_test_split. Pembagian dataset ini bertujuan agar nantinya dapat digunakan untuk melatih dan mengevaluasi kinerja model. Pada proyek ini, 80% dataset digunakan untuk melatih model, dan 20% sisanya digunakan untuk mengevaluasi model.
 
 
-Tabel 2. Melihat data missing value
+## Modelling dan Evaluasi
+Berikut model yang digunakan dan perbandingan error rate terendah menggunakan mse secara berurutan.
+![evaluasi](https://github.com/user-attachments/assets/730b0be9-3266-4ffa-b0f7-460e2c9a4406)
 
-Pada proyek kasus ini tidak ditemukannya data duplikat, tetapi ditemukannya _missing value_. Adapaun metode yang digunakan untuk mengatasi hal ini adalah dengan menerapkan _Dropping_ yaitu menghapus data yang _missing_ digunakannya metode ini dikarenakan jumlah missing value hanya berjumlah `1`. Lihat _Tabel 2. Melihat data missing value_. Adapun untuk _outlier_ juga dilakukan dengan metode _dropping_ menggunakan metode IQR.  IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
-
-$$IQR = Q_3 - Q_1$$
-
-- Q1 adalah kuartil pertama 
-- Q3 adalah kuartil ketiga.
-
-Setelah menggunakan metode IQR untuk menghilangkan _outlier_ pada dataset jumlah dataset menjadi `3790` yang awalnya adalah `4000`.
-Pada proyek ini digunakan _Train Test Split_ pada library  *sklearn.model_selection* untuk membagi dataset menjadi data latih dan data uji dengan pembagian sebesar 20:80 dan random state sebesar 60. Pada proyek kasus ini digunakan _Normalization_ pada library _sklearn.preprocessing.MinMaxScaler_ untuk menormalisasi dataset. Semua proses ini diperlukan dalam rangka membuat model yang baik.
-## Modeling
-
-## Evaluation
