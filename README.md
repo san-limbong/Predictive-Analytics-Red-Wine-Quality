@@ -2,7 +2,7 @@
 ## Domain Proyek
 Domain Poryek : **Ekonomi dan bisnis** , **Pertanian**
 
-Judul : Predictive Analytics: Menentukan Kualitas Anggur
+Judul : Predictive Analytics: Red Wine Quality
 
 ### Latar Belakang
 ![dataset-cover](https://github.com/user-attachments/assets/964f75c0-a8ca-4de5-8b4a-d5d329ef881c)
